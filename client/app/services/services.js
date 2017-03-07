@@ -37,7 +37,7 @@ angular.module('noteApp.services', [])
       });
     };
 
-    var removeOne = function(note) {
+    var removeOne = function(note, cb) {
       console.log('calling removeOne with:', note);
       return $http({
         method: 'PUT',
@@ -45,6 +45,9 @@ angular.module('noteApp.services', [])
         data: note
       }).then(function(resp) {
         console.log('delete response:', resp);
+        if (cb) {
+          cb();
+        }
         return resp;
       }).catch(function(err) {
         console.error(err);

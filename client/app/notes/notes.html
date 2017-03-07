@@ -6,6 +6,8 @@
       <textarea ng-model="noteText" rows="5" cols="50" ng-click="clearField('noteText')"> </textarea>
       <input type="submit" id="submit" value="Create Note"/>
   </form>
+  <button ng-click="clearButton('titleText')">Clear Title</button>
+  <button ng-click="clearButton('noteText')">Clear Note</button>
   <div class="col-xs-4">
     <table class="table table-bordered table-hover table-responsive">
       <tr><th>Notes</th><th></th><th></th></tr>

@@ -43,9 +43,9 @@ displayModule.controller('DisplayController', ['$scope', '$rootScope', '$locatio
 
     $scope.grabNotes = function(cb) {
       NoteAction.getAll().then(function(resp) {
-        console.log('grabNotes successful:', resp);
         if (resp.data.length === 0) {
-          $scope.noteList = [$scope.mockdata1, $scope.mockdata2, $scope.mockdata3];
+          $scope.noteList = [];
+          $scope.currentNote = 'No Notes Yet!';
         } else {
           $scope.noteList = resp.data;
         }
@@ -56,7 +56,11 @@ displayModule.controller('DisplayController', ['$scope', '$rootScope', '$locatio
     };
 
     $scope.grabNotes(function(list) {
-      $scope.currentNote = list[0].note;
+      if (list.length === 0) {
+        $scope.currentNote = 'No Notes Yet!';
+      } else {
+        $scope.currentNote = list[0].note;
+      }
     });
     $scope.example = 'This example should be displayed.';
     $scope.titleText = "Enter your title here!";
@@ -85,6 +89,12 @@ displayModule.controller('DisplayController', ['$scope', '$rootScope', '$locatio
       $location.path('/edit');
     };
 
+    $scope.deleteNote = function(index) {
+      NoteAction.removeOne($scope.noteList[index], function() {
+        $scope.grabNotes();
+      });
+    };
+
     $scope.clearField = function(element) {
       if (element === 'titleText') {
         if (!titleFieldCleared) {
@@ -96,6 +106,14 @@ displayModule.controller('DisplayController', ['$scope', '$rootScope', '$locatio
           $scope.noteText = '';
           noteFieldCleared = true;
         }
+      }
+    };
+
+    $scope.clearButton = function(element) {
+      if (element === 'titleText') {
+        $scope.titleText = '';
+      } else {
+        $scope.noteText = '';
       }
     };
 
