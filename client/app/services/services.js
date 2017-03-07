@@ -1,12 +1,24 @@
 angular.module('noteApp.services', [])
   .factory('NoteAction', function ($http) {
 
+    var noteToEdit;
+
+    var setNoteToEdit = function(note) {
+      noteToEdit = note;
+    };
+
+    var getNoteToEdit = function() {
+      return noteToEdit;
+    };
+
     var addOne = function(note) {
+      console.log('Calling addOne');
       return $http({
         method: 'POST',
         url: '/notes/post',
         data: note
       }).then(function(resp) {
+        console.log('addOne successful.');
         return resp;
       }).catch(function(err) {
         console.error(err);
@@ -34,12 +46,14 @@ angular.module('noteApp.services', [])
       }).catch(function(err) {
         console.error(err);
       })
-    }
+    };
 
     return {
+      getNoteToEdit: getNoteToEdit,
+      setNoteToEdit: setNoteToEdit,
       addOne: addOne,
       getAll: getAll,
       editOne: editOne
-    }
+    };
 
   });

@@ -1,19 +1,25 @@
-<div id='notes' ng-controller='DisplayController'>
+<div id="notes" ng-controller="DisplayController">
   Hello World! This is the Main Notes Document.
-  <div>{{example}}</div>
-  <form id="" ng-submit="editNote(titleText)">
-      Create New Note: <input type="text" ng-model="titleText" value="Enter your title here!">
+  <!--<div class="col-xs-8">{{example}}</div><div class="col-xs-4">Paragraph</div>-->
+  <form id="submitForm" ng-submit="submitNote(titleText, noteText)">
+      Create New Note: <input type="text" ng-model="titleText" ng-click="clearField('titleText')">
+      <textarea ng-model="noteText" rows="5" cols="50" ng-click="clearField('noteText')"> </textarea>
       <input type="submit" id="submit" value="Create Note"/>
   </form>
-
   <div class="col-xs-4">
     <table class="table table-bordered table-hover table-responsive">
       <tr><th>Notes</th><th></th><th></th></tr>
-      <tr ng-repeat="note in noteList track by $index" ng-click="">
-        <td>{{note.title}}</td>
-        <td ng-click="">Edit</td>
-        <td ng-click="">Delete</td>
+      <tr ng-repeat="note in noteList track by $index">
+        <td ng-click="selectNote($index)">{{note.title}}</td>
+        <td ng-click="editNote($index)">Edit</td>
+        <td ng-click="deleteNote($index)">Delete</td>
       </tr>
     </table>
+  </div>
+  <div class="col-xs-2"></div>
+  <div class="col-xs-6">
+        <div class="noteDisplay">
+          <p class="displayNote">{{currentNote}}<p>
+        </div>
   </div>
 </div>

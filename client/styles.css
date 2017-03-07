@@ -1,0 +1,9 @@
+p.displayNote {
+  border-style: solid;
+  border-width: 2px;
+}
+
+textarea {
+  rows: 5;
+  cols: 100;
+}
