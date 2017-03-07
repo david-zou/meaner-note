@@ -12,8 +12,10 @@ var Schema = mongoose.Schema;
 var notesSchema = new Schema({
   title: String,
   note: String,
-  date: { type: Date, default: Date.now },
+  date: String,
 });
+
+// { type: Date, default: Date.now }
 
 var Note = mongoose.model('Note', notesSchema);
 

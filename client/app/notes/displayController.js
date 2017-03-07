@@ -67,9 +67,11 @@ displayModule.controller('DisplayController', ['$scope', '$location', 'NoteActio
     };
 
     $scope.submitNote = function(title, note) {
+      var currentTime = Date.now().toString;
       NoteAction.addOne({
         title: title,
-        note: note
+        note: note,
+        date: currentTime
       }).then(function(resp) {
         console.log('submitNote successful:', resp);
         $scope.grabNotes();
