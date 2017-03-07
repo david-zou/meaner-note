@@ -17,7 +17,6 @@ app.get('/notes/get', function(req, res) {
     if (err) {
       console.error('Cannot get data from database:', err);
     } else {
-      // console.log('/notes/get successful:', data);
       res.send(data);
     }
   });
@@ -28,10 +27,26 @@ app.post('/notes/post', function(req, res) {
     if (err) {
       console.error('Cannot post to database:', err);
     } else {
-      console.log(res);
       res.send(data);
     }
   });
+});
+
+app.put('/notes/delete', function(req, res) {
+  db.findOne(req.body, function(err, found) {
+            if (!found) {
+              console.log('Cannot find item in database', err);
+            } else {
+              db.remove(found, function(err) {
+                if (err) {
+                  console.error('Cannot remove item in database', err);
+                } else {
+                  console.log('Successfully removed item from database.');
+                  res.send();
+                }
+              });
+            }
+          });
 });
 
 app.listen(9001, function() {

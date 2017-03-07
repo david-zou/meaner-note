@@ -3,7 +3,7 @@ angular.module('noteApp', ['noteApp.display', 'noteApp.edit', 'noteApp.services'
     $routeProvider
       .when('/notes', {
         templateUrl: 'app/notes/notes.html',
-        controller: 'DisplayController'
+        // controller: 'DisplayController'
       })
       .when('/edit', {
         templateUrl: 'app/edit/edit.html',

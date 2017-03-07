@@ -1,6 +1,6 @@
 var displayModule = angular.module('noteApp.display', []);
 
-displayModule.controller('DisplayController', ['$scope', '$location', 'NoteAction', function ($scope, $location, NoteAction) {
+displayModule.controller('DisplayController', ['$scope', '$rootScope', '$location', '$timeout', 'NoteAction', function ($scope, $rootScope, $location, $timeout, NoteAction) {
 
     $scope.mockdata1 = {
       title: 'Some note 1',
@@ -67,7 +67,7 @@ displayModule.controller('DisplayController', ['$scope', '$location', 'NoteActio
     };
 
     $scope.submitNote = function(title, note) {
-      var currentTime = Date.now().toString;
+      var currentTime = Date.now().toString();
       NoteAction.addOne({
         title: title,
         note: note,
