@@ -1,6 +1,4 @@
 <div id="notes" ng-controller="DisplayController">
-  Hello World! This is the Main Notes Document.
-  <!--<div class="col-xs-8">{{example}}</div><div class="col-xs-4">Paragraph</div>-->
   <form id="submitForm" ng-submit="submitNote(titleText, noteText)">
       Create New Note: <input type="text" ng-model="titleText" ng-click="clearField('titleText')">
       <textarea ng-model="noteText" rows="5" cols="50" ng-click="clearField('noteText')"> </textarea>
@@ -18,7 +16,7 @@
       </tr>
     </table>
     <button ng-disabled="currentPage == 0" ng-click="prevPage()">Previous Page</button>
-    {{currentPage+1}}/{{totalPages()}}
+    {{currentPage+1}}/{{totalPages() || 1}}
     <button ng-disabled="currentPage >= noteList.length/pageSize - 1" ng-click="nextPage()">Next Page</button>
   </div>
   <div class="col-xs-2"></div>

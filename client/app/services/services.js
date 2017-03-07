@@ -23,20 +23,6 @@ angular.module('noteApp.services', [])
       });
     };
 
-    var removeOne = function(note) {
-      console.log('calling removeOne with:', note);
-      return $http({
-        method: 'PUT',
-        url: '/notes/delete',
-        data: note
-      }).then(function(resp) {
-        console.log('delete response:', resp);
-        return resp;
-      }).catch(function(err) {
-        console.error(err);
-      });
-    };
-
     var removeOne = function(note, cb) {
       console.log('calling removeOne with:', note);
       return $http({
@@ -62,21 +48,8 @@ angular.module('noteApp.services', [])
         return resp;
       }).catch(function(err) {
         console.error(err);
-      })
+      });
     };
-
-    // var editOne = function(note) {
-    //   console.log('editOne:', note);
-    //   return $http({
-    //     method: 'PUT',
-    //     url: '/edit/put',
-    //     data: note
-    //   }).then(function(resp) {
-    //     return resp.data;
-    //   }).catch(function(err) {
-    //     console.error(err);
-    //   });
-    // };
 
     return {
       getNoteToEdit: getNoteToEdit,

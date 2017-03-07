@@ -1,10 +1,14 @@
 angular.module('noteApp.edit', [])
   .controller('EditController', ['$scope', '$rootScope', '$location', 'NoteAction', function ($scope, $rootScope, $location, NoteAction) {
 
-    $scope.titleText = NoteAction.getNoteToEdit().title;
-    $scope.noteText = NoteAction.getNoteToEdit().note;
-    $scope.dateText = NoteAction.getNoteToEdit().date;
-    
+    if (NoteAction.getNoteToEdit() === undefined) {
+      $location.path('/notes');
+    } else {
+      $scope.titleText = NoteAction.getNoteToEdit().title;
+      $scope.noteText = NoteAction.getNoteToEdit().note;
+      $scope.dateText = NoteAction.getNoteToEdit().date;
+    }
+
     $scope.saveNote = function(title, note) {
       console.log('calling saveNote');
       var currentTime = Date.now().toString();
