@@ -9,12 +9,15 @@
   <div class="col-xs-4">
     <table class="table table-bordered table-hover table-responsive">
       <tr><th>Notes</th><th></th><th></th></tr>
-      <tr ng-repeat="note in noteList track by $index">
-        <td ng-click="selectNote($index)">{{note.title}}</td>
-        <td ng-click="editNote($index)">Edit</td>
-        <td ng-click="deleteNote($index)">Delete</td>
+      <tr ng-repeat="note in noteList | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
+        <td ng-click="selectNote($index + (currentPage * pageSize))">{{note.title}}</td>
+        <td ng-click="editNote($index + (currentPage * pageSize))">Edit</td>
+        <td ng-click="deleteNote($index + (currentPage * pageSize))">Delete</td>
       </tr>
     </table>
+    <button ng-disabled="currentPage == 0" ng-click="prevPage()">Previous Page</button>
+    {{currentPage+1}}/{{totalPages()}}
+    <button ng-disabled="currentPage >= noteList.length/pageSize - 1" ng-click="nextPage()">Next Page</button>
   </div>
   <div class="col-xs-2"></div>
   <div class="col-xs-6">

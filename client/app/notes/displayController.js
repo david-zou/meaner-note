@@ -1,5 +1,6 @@
-angular.module('noteApp.display', [])
-  .controller('DisplayController', ['$scope', '$location', 'NoteAction', function ($scope, $location, NoteAction) {
+var displayModule = angular.module('noteApp.display', []);
+
+displayModule.controller('DisplayController', ['$scope', '$location', 'NoteAction', function ($scope, $location, NoteAction) {
 
     $scope.mockdata1 = {
       title: 'Some note 1',
@@ -19,6 +20,26 @@ angular.module('noteApp.display', [])
 
     $scope.noteList = [];
     $scope.currentNote = {};
+    $scope.currentPage = 0;
+    $scope.pageSize = 10;
+    var titleFieldCleared = false;
+    var noteFieldCleared = false;
+
+    $scope.totalPages = function() {
+      return Math.ceil($scope.noteList.length/$scope.pageSize);
+    };
+
+    $scope.nextPage = function() {
+      if ($scope.currentPage < $scope.totalPages()) {
+        $scope.currentPage++;
+      }
+    };
+
+    $scope.prevPage = function() {
+      if ($scope.currentPage > 0) {
+        $scope.currentPage--;
+      }
+    };
 
     $scope.grabNotes = function(cb) {
       NoteAction.getAll().then(function(resp) {
@@ -28,7 +49,9 @@ angular.module('noteApp.display', [])
         } else {
           $scope.noteList = resp.data;
         }
-        cb($scope.noteList);
+        if (cb) {
+          cb($scope.noteList);
+        }
       });
     };
 
@@ -61,7 +84,24 @@ angular.module('noteApp.display', [])
     };
 
     $scope.clearField = function(element) {
-      $scope[element] = '';
+      if (element === 'titleText') {
+        if (!titleFieldCleared) {
+          $scope.titleText = '';
+          titleFieldCleared = true;
+        }
+      } else {
+        if (!noteFieldCleared) {
+          $scope.noteText = '';
+          noteFieldCleared = true;
+        }
+      }
     };
 
   }]);
+
+displayModule.filter('startFrom', function() {
+  return function(input, start) {
+      start = +start; //parse to int
+      return input.slice(start);
+  };
+});
