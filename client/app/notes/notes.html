@@ -11,8 +11,8 @@
       <tr><th>Notes</th><th></th><th></th></tr>
       <tr ng-repeat="note in noteList | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
         <td ng-click="selectNote($index + (currentPage * pageSize))">{{note.title}}</td>
-        <td ng-click="editNote($index + (currentPage * pageSize))">Edit</td>
-        <td ng-click="deleteNote($index + (currentPage * pageSize))">Delete</td>
+        <td ng-click="selectNote($index + (currentPage * pageSize))">Edit</td>
+        <td ng-click="selectNote($index + (currentPage * pageSize))">Delete</td>
       </tr>
     </table>
     <button ng-disabled="currentPage == 0" ng-click="prevPage()">Previous Page</button>

@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../client'));
 
 app.get('/notes/get', function(req, res) {
-  db.find({}, function(err, data) {
+  db.find({}).sort('-date').exec(function(err, data) {
     if (err) {
       console.error('Cannot get data from database:', err);
     } else {
