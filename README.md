@@ -1,4 +1,4 @@
-# Project Name #
+# MEANerNote #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -17,37 +17,29 @@ Once the project moves into development, the press release can be used as a touc
  -->
  
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
   "MEANerNote"
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
   A MEAN way take notes and save them for later, "MEANerNote" is a MEAN implementation of a note-taking application.
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
   MEANerNote provides a lightweight and efficient interface for users to insert notes, edit on the fly and store them for later.
 
 ## Problem ##
-  > Describe the problem your product solves.
-  People forgetting things.
+  This app solves the problem of people forgetting things by allowing them to store their notes into an easy to use editor
+  and providing them access to it whereever they go as long as they have internet connectivity.
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
   Displays notes in a clean list form and provides a user interface for the user to input their notes.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
-  "Now you will forget less things!"
+  "Now you will forget less things thanks to MEANerNote!"
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
-  First, I'd have to create the foundation for the MEAN stack, so try to get a "Hello World" to show first and store something into the database.
+  First, I'd have to create the foundation for the MEAN stack, so try to get a "Hello World" to show first and store something into the database. Then, the backend is implemented first to ensure logic is done properly for storage of notes to the database and then cleaning up with niceties on the front-end.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
   "Yay, now I forget less things thanks to this app!"
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
   To run the app, type in 'localhost:9001' on your browser!
