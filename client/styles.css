@@ -1,9 +1,48 @@
 p.displayNote {
   border-style: solid;
+  background-color: white;
   border-width: 2px;
+  margin: auto;
 }
 
-textarea {
-  rows: 5;
-  cols: 100;
+.form {
+  padding: 20px;
+}
+
+form {
+  text-align: center;
+}
+
+.jumbotron {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://image.shutterstock.com/z/stock-photo-old-notebook-compass-map-vintage-binoculars-photo-camera-on-wooden-background-221543491.jpg');
+  color: white;
+}
+
+a {
+  color: white;
+}
+
+a:visited {
+  color: white;
+}
+
+.formTitle {
+  text-align: center;
+}
+
+.formbuttons {
+  margin: 10 px;
+}
+
+table {
+  text-align: center;
+}
+
+.pageButtons {
+  text-align: center;
+  margin: auto;
+}
+
+body {
+  background-color: #808080;
 }

@@ -86,20 +86,6 @@ displayModule.controller('DisplayController', ['$scope', '$rootScope', '$locatio
       });
     };
 
-    $scope.clearField = function(element) {
-      if (element === 'titleText') {
-        if (!titleFieldCleared) {
-          $scope.titleText = '';
-          titleFieldCleared = true;
-        }
-      } else {
-        if (!noteFieldCleared) {
-          $scope.noteText = '';
-          noteFieldCleared = true;
-        }
-      }
-    };
-
     $scope.clearButton = function(element) {
       if (element === 'titleText') {
         $scope.titleText = '';

@@ -1,8 +1,18 @@
 <div id="edit" ng-controller="EditController">
-  Hello World! This is the Edit document.
-  <form id="editForm" ng-submit="saveNote(titleText, noteText)">
-      Title: <input type="text" ng-model="titleText">
-      <textarea form="editForm" ng-model="noteText" rows="5" cols="50"></textarea>
-      <input type="submit" id="submit" value="Save Note"/>
+  <div class="row">
+  <form id="editForm">
+      Title: <input type="text" ng-model="titleText"><br>
+      <textarea form="editForm" ng-model="noteText" rows="5" cols="60"></textarea>
+      <!--<input type="submit" id="submit" value="Save Note"/>-->
   </form>
+  </div>
+  <div class="row">
+    <div class="col-xs-5"></div>
+    <div class="col-xs-7">
+      <button ng-click="clearButton('titleText')">Clear Title</button>
+      <button ng-click="clearButton('noteText')">Clear Note</button>
+      <button ng-click="saveNote(titleText, noteText)">Save Note</button>
+    </div>
+  </div>
+  
 </div>

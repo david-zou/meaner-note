@@ -29,4 +29,12 @@ angular.module('noteApp.edit', [])
       });
     };
 
+    $scope.clearButton = function(element) {
+      if (element === 'titleText') {
+        $scope.titleText = '';
+      } else {
+        $scope.noteText = '';
+      }
+    };
+
   }]);
