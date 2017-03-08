@@ -1,8 +1,11 @@
 p.displayNote {
+  height: 500px;
   border-style: solid;
   background-color: white;
   border-width: 2px;
   margin: auto;
+  padding: 5px;
+  overflow-y: scroll;
 }
 
 .form {
@@ -28,14 +31,21 @@ a:visited {
 
 .formTitle {
   text-align: center;
+  font-weight: bold;
 }
 
-.formbuttons {
-  margin: 10 px;
+.formButtons {
+  padding: 5px;
+}
+
+.buttonSpacing {
+  padding: 5px 0px 5px 0px;
 }
 
 table {
   text-align: center;
+  font-weight: bold;
+  background-color: white;
 }
 
 .pageButtons {
@@ -44,5 +54,21 @@ table {
 }
 
 body {
-  background-color: #808080;
+  background-color: #DEB887;
+}
+
+th {
+  text-align: center;
+}
+
+textarea {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  width: 100%;
+}
+
+trix-editor {
+  background-color: white;
 }

@@ -1,4 +1,4 @@
-angular.module('noteApp.edit', [])
+angular.module('noteApp.edit', ['angularTrix', 'ngSanitize'])
   .controller('EditController', ['$scope', '$rootScope', '$location', 'NoteAction', function ($scope, $rootScope, $location, NoteAction) {
 
     if (NoteAction.getNoteToEdit() === undefined) {

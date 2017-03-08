@@ -1,11 +1,11 @@
-var displayModule = angular.module('noteApp.display', []);
+var displayModule = angular.module('noteApp.display', ['angularTrix', 'ngSanitize']);
 
-displayModule.controller('DisplayController', ['$scope', '$rootScope', '$location', '$timeout', 'NoteAction', function ($scope, $rootScope, $location, $timeout, NoteAction) {
+displayModule.controller('DisplayController', ['$scope', '$rootScope', '$location', 'NoteAction', function ($scope, $rootScope, $location, NoteAction) {
 
     $scope.noteList = [];
     $scope.currentNote = '';
     $scope.currentPage = 0;
-    $scope.pageSize = 10;
+    $scope.pageSize = 5;
     var titleFieldCleared = false;
     var noteFieldCleared = false;
 

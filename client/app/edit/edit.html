@@ -1,17 +1,21 @@
 <div id="edit" ng-controller="EditController">
   <div class="row">
-  <form id="editForm">
-      Title: <input type="text" ng-model="titleText"><br>
-      <textarea form="editForm" ng-model="noteText" rows="5" cols="60"></textarea>
-      <!--<input type="submit" id="submit" value="Save Note"/>-->
-  </form>
+    <div class="col-xs-5"></div>
+    <div class="col-xs-2"><strong><em>Title:</em></strong> <input type="text" ng-model="titleText"></div><br>
+    <div class="col-xs-5"></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <!--<div class="col-xs-8"><textarea form="editForm" ng-model="noteText" rows="20" cols="100"></textarea></div>-->
+    <div class="col-xs-8"><trix-editor angular-trix ng-model="noteText" class="trix-content"></trix-editor></div>
+    <div class="col-xs-2"></div>
   </div>
   <div class="row">
     <div class="col-xs-5"></div>
-    <div class="col-xs-7">
-      <button ng-click="clearButton('titleText')">Clear Title</button>
-      <button ng-click="clearButton('noteText')">Clear Note</button>
-      <button ng-click="saveNote(titleText, noteText)">Save Note</button>
+    <div class="col-xs-5 offset-xs-1">
+      <button ng-click="clearButton('titleText')"><strong>Clear Title</strong></button>
+      <button ng-click="clearButton('noteText')"><strong>Clear Note</strong></button>
+      <button ng-click="saveNote(titleText, noteText)"><strong>Save Note</strong></button>
     </div>
   </div>
   

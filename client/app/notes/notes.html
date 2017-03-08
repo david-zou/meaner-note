@@ -2,26 +2,25 @@
   <div class="row">
     <div class="col-xs-5">
       <div class="row">
-        <div class="col-xs-10 form">
-          <div class="formTitle">Create New Note:</div>
-          <form id="submitForm" ng-submit="submitNote(titleText, noteText)">
-              Title: <input type="text" ng-model="titleText" onfocus="this.value=''; this.onfocus=null;"><br>
-              <br>Insert Your Notes Here:<br>
-              <textarea ng-model="noteText" rows="5" cols="60" onfocus="this.value=''; this.onfocus=null;"></textarea>
-          </form>
+        <div class="formTitle">Create New Note:</div>
+        <div class="col-xs-12 form">
+          <div class="col-xs-3"></div><div class="col-xs-6"><strong><em>Title:</em></strong><input type="text" ng-model="titleText" onfocus="this.value=''; this.onfocus=null;"></div><div class="col-xs-3"></div>
+          <trix-editor angular-trix ng-model="noteText" class="trix-content" onfocus="this.value=''; this.onfocus=null;"></trix-editor>
+          <!--<textarea ng-model="noteText" rows="5" cols="60" onfocus="this.value=''; this.onfocus=null;"></textarea>-->
         </div>
-        <div class="col-xs-2 formbuttons">
-          <div class="row"><br><br><br><br><br></div>
-          <div class="row"><button ng-click="submitNote(titleText, noteText)">Create Note</button></div>
-          <div class="row"><br></div>
-          <div class="row"><button ng-click="clearButton('titleText')">Clear Title</button></div>
-          <div class="row"><br></div>
-          <div class="row"><button ng-click="clearButton('noteText')">Clear Note</button></div>
+        <div class="row">
+          <div class="col-xs-2"></div>
+          <div class="col-xs-2 align-self-center formButtons"><button ng-click="submitNote(titleText, noteText)"><strong>Create Note</strong></button></div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-2 align-self-center formButtons"><button ng-click="clearButton('titleText')"><strong>Clear Title</strong></button></div>
+          <div class="col-xs-1"></div>
+          <div class="col-xs-2 align-self-center formButtons"><button ng-click="clearButton('noteText')"><strong>Clear Note</strong></button></div>
+          <div class="col-xs-2"></div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <table class="table table-bordered table-hover table-responsive">
+          <table class="table table-bordered table-hover table-striped table-responsive">
             <tr><th>Notes</th><th></th><th></th></tr>
             <tr ng-repeat="note in noteList | startFrom:currentPage*pageSize | limitTo:pageSize track by $index">
               <td ng-click="selectNote($index + (currentPage * pageSize))">{{note.title}}</td>
@@ -30,16 +29,16 @@
             </tr>
           </table>
           <div class="row pageButtons">
-            <button ng-disabled="currentPage == 0" ng-click="prevPage()">Previous Page</button>
-            {{currentPage+1}}/{{totalPages() || 1}}
-            <button ng-disabled="currentPage >= noteList.length/pageSize - 1" ng-click="nextPage()">Next Page</button>
+            <button ng-disabled="currentPage == 0" ng-click="prevPage()"><strong>Previous Page</strong></button>
+            <strong>{{currentPage+1}}/{{totalPages() || 1}}</strong>
+            <button ng-disabled="currentPage >= noteList.length/pageSize - 1" ng-click="nextPage()"><strong>Next Page</strong></button>
           </div>
         </div>
       </div>
     </div>
     <div class="col-xs-7">
         <div class="noteDisplay">
-          <p class="displayNote">{{currentNote}}<p>
+          <p class="displayNote" ng-bind-html='currentNote'><p>
         </div>
     </div>
   </div>
