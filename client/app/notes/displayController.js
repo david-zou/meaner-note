@@ -3,7 +3,7 @@ var displayModule = angular.module('noteApp.display', []);
 displayModule.controller('DisplayController', ['$scope', '$rootScope', '$location', '$timeout', 'NoteAction', function ($scope, $rootScope, $location, $timeout, NoteAction) {
 
     $scope.noteList = [];
-    $scope.currentNote = {};
+    $scope.currentNote = '';
     $scope.currentPage = 0;
     $scope.pageSize = 10;
     var titleFieldCleared = false;
@@ -71,13 +71,18 @@ displayModule.controller('DisplayController', ['$scope', '$rootScope', '$locatio
     };
 
     $scope.editNote = function(index) {
+      console.log('editNote called');
       NoteAction.setNoteToEdit($scope.noteList[index]);
       $location.path('/edit');
     };
 
     $scope.deleteNote = function(index) {
       NoteAction.removeOne($scope.noteList[index], function() {
-        $scope.grabNotes();
+        $scope.grabNotes(function() {
+          if (index === 0 && $scope.noteList.length > 0) {
+            $scope.currentNote = $scope.noteList[0].note;
+          }
+        });
       });
     };
 
@@ -107,7 +112,7 @@ displayModule.controller('DisplayController', ['$scope', '$rootScope', '$locatio
 
 displayModule.filter('startFrom', function() {
   return function(input, start) {
-      start = +start;
+      start = +start; //parse to int
       return input.slice(start);
   };
 });
